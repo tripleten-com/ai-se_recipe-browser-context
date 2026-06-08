@@ -1,0 +1,137 @@
+/* Global reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-text-primary: #0a0a0a;
+  --color-text-secondary: rgb(0 0 0 / 0.5);
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f7f6f1;
+  --color-border: rgb(0 0 0 / 0.14);
+  --color-blue: #1878dc;
+  --color-orange: #d35722;
+  --color-green: #328f51;
+  --shadow: 0 0 0.5px 0 rgb(0 0 0 / 0.3), 0 1px 3px 0 rgb(0 0 0 / 0.15);
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+
+  font-weight: 400;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* RecipePage styles */
+
+.recipe-detail {
+  max-width: 672px;
+  border-radius: 14px;
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.recipe-detail h1 {
+  font-size: 24px;
+  line-height: 1.5;
+  letter-spacing: -0.07px;
+  font-weight: 500;
+  margin: 0 0 18px;
+}
+
+.recipe-detail__category {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1.33;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  border-radius: 8px;
+  padding: 5px 8.5px;
+  align-self: flex-start;
+  margin-bottom: 18px;
+}
+
+.recipe-detail > p {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.31px;
+  font-weight: 400;
+  margin: 0 0 40px;
+}
+
+.recipe-detail .markdown ul,
+.recipe-detail .markdown ol {
+  padding-left: 20px;
+  margin-bottom: 24px;
+}
+
+.recipe-detail .markdown li {
+  margin-bottom: 7.5px;
+}
+
+.recipe-detail .markdown p {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.31px;
+  font-weight: 400;
+  margin: 0 0 8px;
+}
+
+.recipe-detail .markdown h2 {
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.45px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.recipe-detail .markdown h3 {
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: -0.31px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.recipe-detail .markdown h4,
+.recipe-detail .markdown h5,
+.recipe-detail .markdown h6 {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.31px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}

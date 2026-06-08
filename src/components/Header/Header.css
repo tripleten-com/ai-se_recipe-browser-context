@@ -1,0 +1,36 @@
+.header {
+  background-color: var(--color-bg-primary);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header__inner {
+  margin: 0 auto;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+}
+
+.header__nav {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.header__nav-link {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 50%;
+}
+
+.header__nav-link_active {
+  opacity: 100%;
+}
+
+.header__nav-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.1rem;
+}
