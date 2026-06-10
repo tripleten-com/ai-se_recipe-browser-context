@@ -22,9 +22,8 @@ function App() {
     const timeoutId = setTimeout(() => {
       setRecipes(allRecipes);
       setIsLoading(false);
-
-      return () => clearTimeout(timeoutId);
     }, 500);
+    return () => clearTimeout(timeoutId);
   }, []);
 
   if (isLoading) {
