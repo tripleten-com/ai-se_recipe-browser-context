@@ -53,14 +53,15 @@ if (!built.ok) {
 console.log("✅ App builds without errors\n");
 
 const contextFile = read("src/contexts/FavoritesContext.tsx");
+const contextFileTs = read("src/contexts/FavoritesContext.ts");
 const main = read("src/main.tsx");
 const app = read("src/components/App/App.tsx");
 
-test("src/contexts/FavoritesContext.tsx exists (note: .tsx extension)", () => {
-  assert(
-    contextFile !== null,
-    "src/contexts/FavoritesContext.tsx not found — rename FavoritesContext.ts to FavoritesContext.tsx",
-  );
+test("src/contexts/FavoritesContext.tsx exists", () => {
+  const hint = contextFileTs !== null
+    ? "Found FavoritesContext.ts — rename it to FavoritesContext.tsx (it now exports a React component)"
+    : "src/contexts/FavoritesContext.tsx not found — complete lesson 2 first, then rename FavoritesContext.ts to FavoritesContext.tsx";
+  assert(contextFile !== null, hint);
 });
 
 test("FavoritesContext.tsx exports FavoritesProvider", () => {

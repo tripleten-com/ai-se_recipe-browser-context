@@ -52,7 +52,9 @@ if (!built.ok) {
 }
 console.log("✅ App builds without errors\n");
 
-const contextFile = read("src/contexts/FavoritesContext.ts");
+const contextFile =
+  read("src/contexts/FavoritesContext.ts") ||
+  read("src/contexts/FavoritesContext.tsx");
 const counter = read("src/components/Counter/Counter.tsx");
 const main = read("src/main.tsx");
 
@@ -63,17 +65,17 @@ test("src/contexts/FavoritesContext.ts exists", () => {
   );
 });
 
-test("FavoritesContext.ts uses createContext", () => {
+test("FavoritesContext uses createContext", () => {
   assert(
     contextFile && contextFile.includes("createContext"),
-    "FavoritesContext.ts does not call createContext",
+    "FavoritesContext does not call createContext",
   );
 });
 
-test("FavoritesContext.ts exports FavoritesContext", () => {
+test("FavoritesContext exports FavoritesContext", () => {
   assert(
     contextFile && contextFile.includes("FavoritesContext"),
-    "FavoritesContext.ts does not export FavoritesContext",
+    "FavoritesContext does not export FavoritesContext",
   );
 });
 
