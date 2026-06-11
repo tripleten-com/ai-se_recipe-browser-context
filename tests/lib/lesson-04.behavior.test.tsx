@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { BrowserRouter } from "react-router-dom";
 import { FavoritesProvider } from "../../src/contexts/FavoritesContext";
 import App from "../../src/components/App/App";
@@ -16,6 +16,10 @@ function renderApp() {
 }
 
 describe("Lesson 04 — context replaces prop chain", () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
   it("favoriting a recipe still works after removing the prop chain", async () => {
     const user = userEvent.setup();
     renderApp();

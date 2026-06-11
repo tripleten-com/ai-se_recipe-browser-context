@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { BrowserRouter } from "react-router-dom";
 import { FavoritesProvider } from "../../src/contexts/FavoritesContext";
 import App from "../../src/components/App/App";
@@ -16,6 +16,10 @@ function renderApp() {
 }
 
 describe("Lesson 03 — FavoritesProvider", () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
   it("renders recipe cards after loading", async () => {
     renderApp();
     const buttons = await screen.findAllByRole("button", {
