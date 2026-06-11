@@ -1,23 +1,20 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
-// Context value type is an object storing whatever values
-// we want to include.
 type FavoritesContextValue = {
   favorites: Set<string>;
   onToggleFavorite: (id: string) => void;
 };
 
-// Create the context and pass it reasonable defaults.
 export const FavoritesContext = createContext<FavoritesContextValue>({
   favorites: new Set(),
   onToggleFavorite: () => {},
 });
 
-// Export the FavoritesProvider function. It has a `children` prop, which
-// renders the child elements of the Provider.
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
-  // Declare the state owned by context.
-  const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const [favorites, setFavorites] = useState<Set<string>>(() => {
+    const stored = localStorage.getItem("favorites");
+    return stored ? new Set<string>(JSON.parse(stored)) : new Set<string>();
+  });
 
   function handleToggleFavorite(id: string) {
     const newSet = new Set(favorites);
@@ -29,8 +26,11 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
     setFavorites(newSet);
   }
 
-  // Return the provider. When rendered, {children} will be replaced by
-  // the provider's children.
+  useEffect(() => {
+    const favoritesJSON = JSON.stringify([...favorites]);
+    localStorage.setItem("favorites", favoritesJSON);
+  }, [favorites]);
+
   return (
     <FavoritesContext.Provider
       value={{ favorites, onToggleFavorite: handleToggleFavorite }}
