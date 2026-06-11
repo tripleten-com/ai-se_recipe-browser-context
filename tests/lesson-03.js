@@ -116,10 +116,11 @@ test("FavoritesContext.tsx reads from localStorage on init", () => {
   );
 });
 
-test("FavoritesContext.tsx uses the 'saved-recipes' key", () => {
+test("FavoritesContext.tsx uses the 'favorites' localStorage key", () => {
   assert(
-    contextFile && contextFile.includes("saved-recipes"),
-    "FavoritesContext.tsx does not use the key 'saved-recipes' — use that key for both reading and writing",
+    contextFile &&
+      (contextFile.includes('"favorites"') || contextFile.includes("'favorites'")),
+    "FavoritesContext.tsx does not use the key 'favorites' — use that key for both reading and writing",
   );
 });
 
